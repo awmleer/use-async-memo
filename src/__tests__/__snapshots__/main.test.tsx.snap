@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`get async data 1`] = `
+<DocumentFragment>
+  <div />
+</DocumentFragment>
+`;
+
+exports[`get async data 2`] = `
+<DocumentFragment>
+  <div>
+    1
+  </div>
+</DocumentFragment>
+`;
