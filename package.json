@@ -1,6 +1,6 @@
 {
-  "name": "use-creation",
-  "version": "1.0.1",
+  "name": "use-async-memo",
+  "version": "1.0.0",
   "scripts": {
     "build": "gulp prebuild && tsc",
     "test": "jest"
@@ -9,8 +9,8 @@
   "keywords": [
     "react",
     "hook",
-    "creation",
-    "memo"
+    "memo",
+    "async"
   ],
   "main": "index.js",
   "repository": "https://github.com/awmleer/use-async-memo",
