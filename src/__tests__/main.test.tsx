@@ -13,7 +13,7 @@ test('get async data', async function () {
   }
   
   const App: FC = function (props) {
-    const data = useAsyncMemo(() => getAsyncData())
+    const data = useAsyncMemo(() => getAsyncData(), [])
     return (
       <div>
         {data}
