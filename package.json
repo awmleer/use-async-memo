@@ -1,6 +1,6 @@
 {
   "name": "use-async-memo",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "scripts": {
     "build": "gulp prebuild && tsc",
     "test": "jest"
@@ -28,7 +28,8 @@
     "react": "16.8.x",
     "react-dom": "16.8.x",
     "ts-jest": "^24.0.2",
-    "typescript": "^3.1.1"
+    "typescript": "^3.5.2",
+    "use-debounce": "^2.1.0"
   },
   "peerDependencies": {
     "react": "^16.8.0"

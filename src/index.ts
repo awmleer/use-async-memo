@@ -4,7 +4,9 @@ export function useAsyncMemo<T>(factory: () => Promise<T>, deps: DependencyList,
   const [val, setVal] = useState<T>(initial)
   useEffect(() => {
     let cancel = false
-    factory().then((val) => {
+    const promise = factory()
+    if (promise === undefined) return
+    promise.then((val) => {
       if (!cancel) {
         setVal(val)
       }

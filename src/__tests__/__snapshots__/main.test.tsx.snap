@@ -13,3 +13,38 @@ exports[`get async data 2`] = `
   </div>
 </DocumentFragment>
 `;
+
+exports[`with debounce 1`] = `
+<DocumentFragment>
+  <div>
+    <span>
+      1
+    </span>
+    <span />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`with debounce 2`] = `
+<DocumentFragment>
+  <div>
+    <span>
+      2
+    </span>
+    <span />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`with debounce 3`] = `
+<DocumentFragment>
+  <div>
+    <span>
+      5
+    </span>
+    <span>
+      5
+    </span>
+  </div>
+</DocumentFragment>
+`;

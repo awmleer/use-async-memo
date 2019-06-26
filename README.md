@@ -7,6 +7,8 @@ React hook for generating async memoized data.
 function useAsyncMemo<T>(factory: () => Promise<T>, deps: DependencyList, initial?: T): T
 ```
 
+If `factory` returns `undefined`, `useAsyncMemo` will leave the memoized value **unchanged**.
+
 ## Demo
 
 ```jsx
