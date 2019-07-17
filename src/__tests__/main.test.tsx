@@ -1,8 +1,7 @@
 import * as testing from '@testing-library/react'
-import {FC, useCallback, useRef, useState} from 'react'
+import {FC, useState} from 'react'
 import * as React from 'react'
 import {useAsyncMemo} from '../index'
-import _ = require('lodash');
 import {act} from '@testing-library/react'
 import {useDebounce} from 'use-debounce'
 
@@ -14,7 +13,7 @@ test('get async data', async function () {
       }, 100)
     })
   }
-  
+
   const App: FC = function (props) {
     const data = useAsyncMemo(() => getAsyncData(), [])
     return (
@@ -40,21 +39,21 @@ test('with debounce', async function () {
       }, 50)
     })
   }
-  
+
   let change: () => void
-  
+
   const App: FC = function (props) {
     const [x, setX] = useState(1)
     const [debouncedX] = useDebounce(x, 100)
-    
+
     const y = useAsyncMemo(async () => {
       return await getAsyncData(debouncedX)
     }, [debouncedX])
-    
+
     change = () => {
       setX(x + 1)
     }
-    
+
     return (
       <div>
         <span>{x}</span>
