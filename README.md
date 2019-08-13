@@ -1,4 +1,5 @@
 # useAsyncMemo
+
 React hook for generating async memoized data.
 
 ## API
@@ -11,7 +12,13 @@ If `factory` returns `undefined`, `useAsyncMemo` will leave the memoized value *
 
 ## Demo
 
-A basic one:
+Fetch API:
+
+```js
+const data = useAsyncMemo(async () => doAPIRequest(), [])
+```
+
+Search on inputting:
 
 ```js
 const [input, setInput] = useState()
@@ -19,6 +26,18 @@ const users = useAsyncMemo(async () => {
   if (input === '') return []
   return await apiService.searchUsers(input)
 }, [input], [])
+```
+
+Get loading status:
+
+```js
+const [loading, setLoading] = useState(true)
+const data = useAsyncMemo(async () => {
+  setLoading(true)
+  const response = await doAPIRequest()
+  setLoading(false)
+  return response
+}, [])
 ```
 
 With ability of manual clearing:

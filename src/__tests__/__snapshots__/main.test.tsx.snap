@@ -2,14 +2,26 @@
 
 exports[`get async data 1`] = `
 <DocumentFragment>
-  <div />
+  <div>
+    <p>
+      data: 
+    </p>
+    <p>
+      loading: true
+    </p>
+  </div>
 </DocumentFragment>
 `;
 
 exports[`get async data 2`] = `
 <DocumentFragment>
   <div>
-    1
+    <p>
+      data: 1
+    </p>
+    <p>
+      loading: false
+    </p>
   </div>
 </DocumentFragment>
 `;

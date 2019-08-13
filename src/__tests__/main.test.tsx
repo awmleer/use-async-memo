@@ -15,10 +15,17 @@ test('get async data', async function () {
   }
 
   const App: FC = function (props) {
-    const data = useAsyncMemo(() => getAsyncData(), [])
+    const [loading, setLoading] = useState(true)
+    const data = useAsyncMemo(async () => {
+      setLoading(true)
+      const data = await getAsyncData()
+      setLoading(false)
+      return data
+    }, [])
     return (
       <div>
-        {data}
+        <p>data: {data}</p>
+        <p>loading: {loading.toString()}</p>
       </div>
     )
   }
