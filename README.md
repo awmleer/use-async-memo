@@ -12,13 +12,27 @@ If `factory` returns `undefined`, `useAsyncMemo` will leave the memoized value *
 
 ## Demo
 
-Fetch API:
+### Fetch API:
 
 ```js
-const data = useAsyncMemo(async () => doAPIRequest(), [])
+const data = useAsyncMemo(doAPIRequest, [])
 ```
 
-Search on inputting:
+or
+
+```js
+const data = useAsyncMemo(() => doAPIRequest(), [])
+```
+
+or
+
+```js
+const data = useAsyncMemo(() => {
+  return doAPIRequest()
+}, [])
+```
+
+### Search on inputting:
 
 ```js
 const [input, setInput] = useState()
@@ -28,7 +42,7 @@ const users = useAsyncMemo(async () => {
 }, [input], [])
 ```
 
-Get loading status:
+### Get loading status:
 
 ```js
 const [loading, setLoading] = useState(true)
@@ -40,7 +54,7 @@ const data = useAsyncMemo(async () => {
 }, [])
 ```
 
-With ability of manual clearing:
+### With ability of manual clearing:
 
 ```js
 const [input, setInput] = useState()
@@ -64,7 +78,9 @@ const users = useAsyncMemo(async () => {
 }, [input, clearFlag], [])
 ```
 
-With debounced value: (see [use-debounce](https://github.com/xnimorz/use-debounce))
+### With debounced value:
+ 
+> see [use-debounce](https://github.com/xnimorz/use-debounce)
 
 ```js
 const [input, setInput] = useState()
