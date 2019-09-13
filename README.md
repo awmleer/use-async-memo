@@ -32,6 +32,14 @@ const data = useAsyncMemo(() => {
 }, [])
 ```
 
+or
+
+```js
+const data = useAsyncMemo(async () => {
+  return await doAPIRequest()
+}, [])
+```
+
 ### Search on inputting:
 
 ```js
