@@ -12,6 +12,12 @@ If `factory` returns `undefined` or `null`, `useAsyncMemo` will leave the memoiz
 
 ## Demo
 
+### Import
+
+```js
+import {useAsyncMemo} from "use-async-memo"
+```
+
 ### Fetch API:
 
 ```js
