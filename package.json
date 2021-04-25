@@ -1,6 +1,6 @@
 {
   "name": "use-async-memo",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "scripts": {
     "build": "gulp prebuild && tsc",
     "test": "jest"
@@ -14,7 +14,7 @@
   ],
   "main": "index.js",
   "repository": "https://github.com/awmleer/use-async-memo",
-  "author": "awmleer <awmleer@sparker.xyz>",
+  "author": "awmleer <awmleer@icloud.com>",
   "license": "MIT",
   "private": false,
   "devDependencies": {
@@ -32,6 +32,6 @@
     "use-debounce": "^2.1.0"
   },
   "peerDependencies": {
-    "react": "^16.8.0"
+    "react": "^16.8.0 || ^17.0.0"
   }
 }
