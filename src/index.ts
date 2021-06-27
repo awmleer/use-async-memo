@@ -4,7 +4,7 @@ export function useAsyncMemo<T>(factory: (...args: any) => Promise<T>, deps?: De
   let [val, setVal] = useState(initial)
 
   useEffect(() => {
-		let pending = true
+    let pending = true
     factory().then(res => pending && setVal(res))
 
     return () => {
