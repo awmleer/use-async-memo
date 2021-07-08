@@ -16,17 +16,15 @@ export function useAsyncMemo<T>(factory: () => Promise<T>, deps?: DependencyList
 }
 
 export function useAsync<T>(factory: () => Promise<T>, deps?: DependencyList, initial?: T) {
-  let forceUpdate = useReducer(x => !x, false)[1]
+  let forceUpdate = useState<T>()[1]
   let val = useRef(initial)
 
   useMemo(() => val.current = initial, deps)
   useEffect(() => {
     let pending = true
     factory().then(res => {
-      if(pending) {
-        val.current = res
-        forceUpdate()
-      }
+      if(pending)
+        forceUpdate(val.current = res)
     })
     return () => {
       pending = false
