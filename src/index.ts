@@ -1,19 +1,35 @@
-import {DependencyList, useEffect, useState} from 'react'
+import { DependencyList, useRef, useEffect, useState, useReducer, useMemo } from 'react'
 
-export function useAsyncMemo<T>(factory: () => Promise<T> | undefined | null, deps: DependencyList, initial: T = undefined): T {
-  const [val, setVal] = useState<T>(initial)
+export function useAsyncMemo<T>(factory: () => Promise<T>, deps?: DependencyList, initial?: T) {
+  let [val, setVal] = useState(initial)
+
   useEffect(() => {
-    let cancel = false
-    const promise = factory()
-    if (promise === undefined || promise === null) return
-    promise.then((val) => {
-      if (!cancel) {
-        setVal(val)
-      }
-    })
+    let pending = true
+    factory().then(res => pending && setVal(res))
+
     return () => {
-      cancel = true
+      pending = false
     }
   }, deps)
+
   return val
+}
+
+export function useAsync<T>(factory: () => Promise<T>, deps?: DependencyList, initial?: T) {
+  let forceUpdate = useState<T>()[1]
+  let val = useRef(initial)
+
+  useMemo(() => val.current = initial, deps)
+  useEffect(() => {
+    let pending = true
+    factory().then(res => {
+      if(pending)
+        forceUpdate(val.current = res)
+    })
+    return () => {
+      pending = false
+    }
+  }, deps)
+
+  return val.current
 }
