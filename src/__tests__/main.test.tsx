@@ -76,9 +76,15 @@ test('with debounce', async function () {
     change()
   })
   expect(renderer.asFragment()).toMatchSnapshot()
-  change()
-  change()
-  change()
+  act(() => {
+    change()
+  })
+  act(() => {
+    change()
+  })
+  act(() => {
+    change()
+  })
   await new Promise((resolve) => {
     setTimeout(resolve, 1000)
   })
