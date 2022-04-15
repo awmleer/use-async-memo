@@ -7,7 +7,7 @@ import {useDebounce} from 'use-debounce'
 
 test('get async data', async function () {
   function getAsyncData() {
-    return new Promise((resolve) => {
+    return new Promise<number>((resolve) => {
       setTimeout(() => {
         resolve(1)
       }, 100)
