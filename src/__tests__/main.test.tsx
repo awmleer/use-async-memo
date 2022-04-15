@@ -47,7 +47,7 @@ test('with debounce', async function () {
     })
   }
 
-  let change: () => void
+  let change: () => void = () => {}
 
   const App: FC = function (props) {
     const [x, setX] = useState(1)
