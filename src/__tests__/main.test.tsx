@@ -1,13 +1,13 @@
 import * as testing from '@testing-library/react'
-import {FC, useState} from 'react'
+import { FC, useState } from 'react'
 import * as React from 'react'
-import {useAsyncMemo} from '../index'
-import {act} from '@testing-library/react'
-import {useDebounce} from 'use-debounce'
+import { useAsyncMemo } from '../index'
+import { act, waitFor } from '@testing-library/react'
+import { useDebounce } from 'use-debounce'
 
 test('get async data', async function () {
   function getAsyncData() {
-    return new Promise<number>((resolve) => {
+    return new Promise<number>(resolve => {
       setTimeout(() => {
         resolve(1)
       }, 100)
@@ -29,18 +29,17 @@ test('get async data', async function () {
       </div>
     )
   }
-  const renderer = testing.render(
-    <App/>
-  )
+  const renderer = testing.render(<App />)
   expect(renderer.asFragment()).toMatchSnapshot()
-  await getAsyncData()
+  await act(async () => {
+    await getAsyncData()
+  })
   expect(renderer.asFragment()).toMatchSnapshot()
 })
 
-
 test('with debounce', async function () {
   function getAsyncData(x: number) {
-    return new Promise<number>((resolve) => {
+    return new Promise<number>(resolve => {
       setTimeout(() => {
         resolve(x)
       }, 50)
@@ -68,9 +67,7 @@ test('with debounce', async function () {
       </div>
     )
   }
-  const renderer = testing.render(
-    <App/>
-  )
+  const renderer = testing.render(<App />)
   expect(renderer.asFragment()).toMatchSnapshot()
   act(() => {
     change()
@@ -85,9 +82,6 @@ test('with debounce', async function () {
   act(() => {
     change()
   })
-  await new Promise((resolve) => {
-    setTimeout(resolve, 1000)
-  })
+  await waitFor(() => expect(renderer.container.textContent?.trim()).toBe('55'))
   expect(renderer.asFragment()).toMatchSnapshot()
 })
-
