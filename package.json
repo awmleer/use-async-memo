@@ -18,7 +18,7 @@
   "license": "MIT",
   "private": false,
   "peerDependencies": {
-    "react": "^16.8.0 || ^17.0.0"
+    "react": ">=16.8.0"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^4.0.0",
